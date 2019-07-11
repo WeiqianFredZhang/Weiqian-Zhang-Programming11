@@ -1,31 +1,40 @@
 public class Main {
-    public static void main(String args[]){
-        /*For the following expressions write out using code step by step how the
-        compiler will evaluate it
-        Example:
-        System.out.println(2 * 5 + 3);
-        System.out.println(10 + 3);
-        System.out.println(13);
-        Only complete one computation per line of code
-        The output for every line is always equal to the same number
-        In example above the out put should be
-        13
-        13
-        13
-        */
-        //Expression 1
-        System.out.println((9 - 4)+ 10/2 - (4 - 8)/3);
+    public static void main(String[] args) {
+        School sch = new School();
 
-        //Expression 2
-        System.out.println(23%4 + (18 - 3 / 2));
 
-        //Expression 3
-        System.out.println(((8 - 5) + Math.pow(3,4)/5));
+        System.out.println("Add 10 students to student list");
+        for(int i=0; i<10; i++){
+            Student stu = new Student("a","b",i+5); // prints student's information
+            sch.addStudent(stu); // Add 10 students to student list in total
+        }
 
-        //Expression 4
-        System.out.println((9 % 4) - 8 + Math.pow(2,3) / 8 + (Math.sqrt(81) / 3));
+        System.out.println("add 3 teachers to teacher list");
+        for(int i=0; i<3; i++){
+            Teacher tea = new Teacher("a"+i,"b","english"); // prints teacher's information
+            sch.addTeacher(tea); // add 3 teachers to teacher list in total
+        }
 
-        //Expression 5
-        System.out.println(((14 / 2 + 3) * Math.sin(45) + 2) - Math.pow(Math.sqrt(25), 3));
+        // display both lists
+        System.out.println("");
+        sch.printTeachers();
+        sch.printStudents();
+
+
+        System.out.println("\n\nremove 2 students");
+        Student studentDelete_1 =  sch.getStudents().get(2); // remove 1 student from School; get(2) means the second in the list
+        sch.deleteStudent(studentDelete_1);
+
+        Student studentDelete_2  =  sch.getStudents().get(5); // remove another student from School; get(5) means the 5th in the list
+        sch.deleteStudent(studentDelete_2);
+
+
+        System.out.println("remove 1 teacher\n");
+        Teacher teaDelete = new Teacher("a1","b","english"); // remove 1 teacher
+        sch.deleteTeacher(teaDelete);
+
+        sch.printTeachers(); // display the teacher list after edit
+
+        sch.printStudents(); // display the student list after edit
     }
 }
